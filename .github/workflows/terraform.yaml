@@ -34,8 +34,7 @@ jobs:
         id: checkov
         run: |
           cd terraform
-          checkov -d . --directory . --out terraform-scan-results.xml
-
+          checkov -d .
       - name: Check Checkov Results
         if: ${{ steps.checkov.outputs.returncode == 1 }}
         run: exit 1
