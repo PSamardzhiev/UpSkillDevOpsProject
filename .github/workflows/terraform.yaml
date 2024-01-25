@@ -36,8 +36,10 @@ jobs:
           cd terraform
           checkov -d .
       - name: Check Checkov Results
-        if: ${{ steps.checkov.outputs.returncode == 1 }}
-        run: echo "Checkov managed to find some vulnerabilities, proceed at your own risk"
+         run: |
+          if [ ${{ steps.checkov.outputs.returncode }} -eq 1 ]; then
+            echo "Checkov scan found issues, but continuing workflow..."
+          fi
 
       - name: Terraform Plan
         id: plan
