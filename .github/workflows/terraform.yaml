@@ -21,11 +21,8 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: Install Checkov
-        run: |
-          curl -sSL https://github.com/bridgecrewio/checkov/releases/latest/download/checkov_linux_amd64 -o checkov
-          chmod +x checkov
-          sudo mv checkov /usr/local/bin/
+      - name: Install Checkov with pip
+        run: pip install checkov
 
       - name: Terraform Init
         id: init
@@ -37,7 +34,7 @@ jobs:
         id: checkov
         run: |
           cd terraform
-          checkov -d .
+          checkov -d . --directory . --out terraform-scan-results.xml
 
       - name: Check Checkov Results
         if: ${{ steps.checkov.outputs.returncode == 1 }}
@@ -48,10 +45,9 @@ jobs:
         run: |
           cd terraform
           terraform plan -out=tfplan
-
+          
       - name: Terraform Apply
         id: apply
         run: |
           cd terraform
           terraform apply --auto-approve tfplan
-
