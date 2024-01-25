@@ -35,8 +35,9 @@ jobs:
         run: |
           cd terraform
           checkov -d .
+
       - name: Check Checkov Results
-         run: |
+        run: |
           if [ ${{ steps.checkov.outputs.returncode }} -eq 1 ]; then
             echo "Checkov scan found issues, but continuing workflow..."
           fi
@@ -52,3 +53,4 @@ jobs:
         run: |
           cd terraform
           terraform apply --auto-approve tfplan
+
