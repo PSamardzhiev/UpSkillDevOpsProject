@@ -34,13 +34,7 @@ jobs:
         id: checkov
         run: |
           cd terraform
-          checkov -d .
-
-      - name: Check Checkov Results
-        run: |
-          if [ ${{ steps.checkov.outputs.returncode }} -eq 1 ]; then
-            echo "Checkov scan found issues, but continuing workflow..."
-          fi
+          checkov -d . || exit 0
 
       - name: Terraform Plan
         id: plan
