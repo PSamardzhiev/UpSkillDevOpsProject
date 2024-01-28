@@ -5,7 +5,7 @@
 - [Overview](#overview)
 - [Repo Structure](#Repo-Structure)
 - [CICD Workflow](#CICD-Workflow)
-- [IaC Details](#Terraform-IaC-Details)
+- [Packer Details](#Immutable-Infrastructure-with-Hashicorp-Packer)
 - [Usage and Requirements](#Usage-Requirements)
 
 ## Quick Overview
@@ -50,7 +50,7 @@ Defines several jobs as a complete CICD Pipeline
 - As a final step, once the EC2 environment is built using the terraform code, the pipeline copies the tfstate (terraform state file), MyAWSKey.pem (private key for EC2 management*) and tfplan file to a private S3 Bucket.
 - * The Infrastructure administrator can download the MyAWSKey.pem file and use ssh -i MyAWSKey.pem ubuntu@Public-IP-Address in order to connect and manually manage the EC2 VM
 
-## Terraform IaC Details:
+## Immutable Infrastructure with Hashicorp Packer:
 
 
 ## Usage requirements:
