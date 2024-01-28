@@ -4,9 +4,12 @@
 
 - [Overview](#overview)
 - [Repo Structure](#Repo-Structure)
-- [CICD Workflow](#CICD-Workflow)
+- [CICD Workflow Details](#CICD-Workflow)
 - [Packer Details](#Immutable-Infrastructure-with-Hashicorp-Packer)
+- [Terraform IaC Details](#Terraform-IaC-Details)
+- [Ansible Config Management Details](#Ansible-Configuration-Managmenet)
 - [Usage and Requirements](#Usage-Requirements)
+- [Possible Future Improvements](#Future-Improvements:)
 
 ## Quick Overview
 
@@ -51,6 +54,36 @@ Defines several jobs as a complete CICD Pipeline
 - * The Infrastructure administrator can download the MyAWSKey.pem file and use ssh -i MyAWSKey.pem ubuntu@Public-IP-Address in order to connect and manually manage the EC2 VM
 
 ## Immutable Infrastructure with Hashicorp Packer:
+### Packer Template for Ubuntu AMI
+
+This part of the project contains a Packer template for building an Amazon Machine Image (AMI) with Ubuntu 22.04 using the `amazon-ebs` builder. The resulting AMI is named "telerik-demo-ami" and is configured for use in the `us-east-1` region with an instance type of `t2.micro`.
+
+Packer Configuration
+
+The Packer template utilizes the `amazon-ebs` builder with the following configuration:
+
+- **AMI Name**: "telerik-demo-ami"
+- **Instance Type**: "t2.micro"
+- **Region**: "us-east-1"
+- **Source AMI Filter**:
+  - Filters for the latest Ubuntu 22.04 AMD64 server image.
+  - Filters for EBS root device type and HVM virtualization type.
+  - Owner set to Canonical (owner ID: "099720109477").
+- **SSH Username**: "ubuntu"
+
+How to Use
+
+1. Install Packer on your local machine.
+2. Clone this repository and navigate to packer folder
+3. Review and customize the Packer template (`packer.pkr.hcl`) if needed.
+4. Run the Packer build command: `packer build ubuntu-ami.pkr.hcl`.
+
+The resulting AMI will be available in your AWS account with the specified name ("telerik-demo-ami") and configuration.
+
+## Terraform IaC Details:
+
+
+## Ansible Configuration Managmenet:
 
 
 ## Usage requirements:
@@ -87,9 +120,11 @@ terraform {
   }
 }
 ``````
-- Once you have terraform installed locally nagivate to terraform folder and execute the following commands
+- Once you have terraform installed locally nagivate to terraform folder and execute the following commands in your terminal:
+
 ```bash
 terraform init
 terraform plan #review the provided plan
 terraform apply #confirmation will be requred
-``````
+```
+## Future Improvements:
