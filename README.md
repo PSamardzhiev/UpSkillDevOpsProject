@@ -74,7 +74,7 @@ The Packer template utilizes the `amazon-ebs` builder with the following configu
 How to Use
 
 1. Install Packer on your local machine.
-2. Clone this repository and navigate to packer folder
+2. Clone this repository and navigate to the `./packer` folder
 3. Review and customize the Packer template (`packer.pkr.hcl`) if needed.
 4. Run the Packer build command: `packer build ubuntu-ami.pkr.hcl`.
 
