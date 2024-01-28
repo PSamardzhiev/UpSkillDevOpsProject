@@ -1,3 +1,4 @@
+#variables.tf
 variable "aws_region" {
   type        = string
   description = "region to test aws resources created using terraform"

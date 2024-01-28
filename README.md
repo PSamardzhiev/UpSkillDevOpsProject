@@ -51,7 +51,7 @@ Defines several jobs as a complete CICD Pipeline
 - Creates terraform plan with output to tfplan file
 - Finally if the above mentioned checks are passed, then terraform apply with auto-approve is executed to build the AWS environment
 - As a final step, once the EC2 environment is built using the terraform code, the pipeline copies the tfstate (terraform state file), MyAWSKey.pem (private key for EC2 management*) and tfplan file to a private S3 Bucket.
-- * The Infrastructure administrator can download the MyAWSKey.pem file and use ssh -i MyAWSKey.pem ubuntu@Public-IP-Address in order to connect and manually manage the EC2 VM
+- * The Infrastructure administrator can download the MyAWSKey.pem file and use ssh -i MyAWSKey.pem ubuntu@Public-IP-Address in order to connect and manually manage the EC2 VM.
 
 ## Immutable Infrastructure with Hashicorp Packer:
 ### Packer Template for Ubuntu AMI

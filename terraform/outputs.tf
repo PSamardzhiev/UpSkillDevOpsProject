@@ -1,3 +1,4 @@
+#outputs.tf
 output "project-name" {
   description = "Print a Custom Message:"
   value       = "Telerik Academy UpSkill DevOps Project"
