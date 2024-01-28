@@ -55,9 +55,10 @@ jobs:
           cd terraform
           terraform apply --auto-approve tfplan
 
-      - name: Copy tfstate file to the created S3 Bucket
+      - name: Copy tfstate and SSH Key files to the created S3 Bucket
         run: |
           cd terraform
           aws s3 cp terraform.tfstate s3://devops-tfm-s3-bucket-us-east-1a/terraform.tfstate
+          aws s3 cp MyAWSKey.pem s3://devops-tfm-s3-bucket-us-east-1a/MyAWSKey.pem
 
 
