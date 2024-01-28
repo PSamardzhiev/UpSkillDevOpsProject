@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
 - [Repo Structure](#Repo-Structure)
-- [Project Details](#Project-Details)
+- [CICD Workflow](#CICD-Workflow)
 - [Usage and Requirements](#Usage-Requirements)
 
 ## Quick Overview
@@ -30,7 +30,10 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf  <-- TF Modules Version
     └── variables.tf  <-- Variables File
 ```
-## Project Details
+## CICD Workflow
+``````
+.git/workflows/terraform.yaml
+``````
 
 
 ## Usage requirements:
