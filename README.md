@@ -1,39 +1,37 @@
-# Terraform & Ansible AWS Deployment for NextCloud
-
-This repository contains the infrastructure as code (IaC) setup using Terraform and Ansible to deploy a Dockerized NextCloud application on AWS. The project is created for the Telerik DevOps Upskill program, showcasing a complete CI/CD pipeline.
-
-
+# NextCloud on AWS using DevOps Practices
+##### Telerik Academy DevOps UpSkill Final Project - 2023-2024 #####
 ## Table of Contents
 
-- [Overview](#overview)
+- [Overview](#Quick-overview)
 - [Project Structure](#repo-structure)
-- [Project Goals and Overview](#Goals)
+- [Project Goals and Overview](#Description)
+- [Usage and Requirements](#usage-requirements)
 
-## Overview
+## Quick Overview
 
-The primary goal of this project is to demonstrate a comprehensive CI/CD pipeline by deploying a Dockerized NextCloud application on AWS. The technologies utilized include Ansible, Terraform, and AWS. The project is specifically designed for the Telerik DevOps Upskill program.
+The primary goal of this project is to demonstrate a comprehensive CI/CD pipeline by deploying a Dockerized NextCloud application on AWS.
 
 ## Repo Structure
 ```
 .
 ├── ansible
-│   └── instance-config.yml <-- EC2 Configuration FIle
-├── app <--application folder
-│   ├── compose.yaml <-- NextCloud YAML File for Docker
+│   └── instance-config.yml  <-- EC2 Configuration FIle
+├── app  <--application folder
+│   ├── compose.yaml  <-- NextCloud YAML File for Docker
 │   ├── output.jpg
-│   └── README.md <-- Basic Information about the NextCloud
-├── LICENSE <-- Repo LICENSE file
+│   └── README.md  <-- Basic Information about the NextCloud
+├── LICENSE  <-- Repo LICENSE file
 ├── packer
 │   └── packer.pkr.hcl <--packer file
-├── README.md <-- Thi README.md file
-└── terraform <-- Terraform Code folder
-    ├── main.tf
-    ├── outputs.tf
-    ├── terraform.tf
-    └── variables.tf
+├── README.md  <-- Thi README.md file
+└── terraform  <-- Terraform Code folder
+    ├── main.tf  <-- Main Terraform File
+    ├── outputs.tf  <-- Outputs the infrastructure Details
+    ├── terraform.tf  <-- TF Modules Version
+    └── variables.tf  <-- Variables File
 ```
-## Goals
-
+## Description
+The project contains a github actions CICD pipeline which deployes EC2 virtual machine, then pulls this repo and configure the EC2 instance by installing Docker and runs a next cloud
 
 ## Usage requirements:
 - In order to use this project you need to have AWS account and Terraform installed locally, Terraform modules version is outlined in terraform/terraform.tf file
