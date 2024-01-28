@@ -3,20 +3,15 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Infrastructure Details](#infrastructure-details)
-- [Ansible Playbook](#ansible-playbook)
-- [Terraform Configuration](#terraform-configuration)
-- [Variables](#variables)
-- [How to Use](#how-to-use)
-- [Contributors](#contributors)
-- [License](#license)
+- [Repo Structure](#Repo-Structure)
+- [Project Details](#Project-Details)
+- [Usage and Requirements](#Usage-Requirements)
 
 ## Quick Overview
 
 The primary goal of this project is to demonstrate a comprehensive CI/CD pipeline by deploying a Dockerized NextCloud application on AWS.
 
-## Structure
+## Repo Structure
 ```
 .
 ├── ansible
@@ -35,7 +30,7 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf  <-- TF Modules Version
     └── variables.tf  <-- Variables File
 ```
-## Project goal and Overview
+## Project Details
 
 
 ## Usage requirements:
