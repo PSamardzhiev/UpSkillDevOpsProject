@@ -181,7 +181,9 @@ resource "aws_instance" "web_server" {
       //"sudo git clone https://github.com/hashicorp/demo-terraform-101 /tmp",
       //"sudo sh /tmp/assets/setup-web.sh",
       "sudo git clone https://github.com/PSamardzhiev/UpSkillDevOpsProject.git /tmp",
-      "sudo chmod 1777 /tmp"
+      "sudo chmod 1777 /tmp",
+      "ansible-playbook /tmp/ansible/instance-config.yml",
+      "cd /tmp/app && sudo docker compose up -d"
     ]
   }
 
