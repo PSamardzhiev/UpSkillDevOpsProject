@@ -59,3 +59,9 @@ jobs:
           cd terraform
           terraform apply --auto-approve tfplan
 
+      - name: Copy tfstate file to the created S3 Bucket
+        run: |
+          cd terraform
+          aws s3 cp terraform.tfstate s3://my-aws-s3-bucket-us-east-1a/terraform.tfstate
+
+

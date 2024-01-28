@@ -33,6 +33,3 @@ output "ec2-instance-name" {
   value       = aws_instance.web_server.tags.Name
   sensitive   = false
 }
-/*
-multiline comment 
-*/

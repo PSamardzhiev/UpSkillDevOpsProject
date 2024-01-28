@@ -132,21 +132,14 @@ resource "aws_nat_gateway" "nat_gateway" {
   }
 }
 
-# # Terraform Data Block - To Lookup Latest Ubuntu 22.04 AMI Image
+# # Terraform Data Block - To Lookup for packer created Immutable Ubuntu 22.04 AMI
 data "aws_ami" "ubuntu" {
+  owners      = ["self"]
   most_recent = true
-
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+    values = ["telerik-demo-ami"]
   }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"]
 }
 
 # # Terraform Resource Block - To Build EC2 instance in Public Subnet
@@ -178,8 +171,6 @@ resource "aws_instance" "web_server" {
       "sudo apt-add-repository --yes --update ppa:ansible/ansible",
       "sudo apt-get install -y ansible",
       "sudo rm -rf /tmp",
-      //"sudo git clone https://github.com/hashicorp/demo-terraform-101 /tmp",
-      //"sudo sh /tmp/assets/setup-web.sh",
       "sudo git clone https://github.com/PSamardzhiev/UpSkillDevOpsProject.git /tmp",
       "sudo chmod 1777 /tmp",
       "ansible-playbook /tmp/ansible/instance-config.yml",
@@ -210,20 +201,29 @@ resource "aws_subnet" "terraform-subnet" {
 }
 
 # uncomment in case of any need, commented to save money on AWS
-# resource "aws_s3_bucket" "my-aws-s3-bucket" {
-#   bucket = "my-aws-s3-bucket-${var.variables_sub_az}"
-#   acl    = "private"
-#   force_destroy = true
+resource "aws_s3_bucket" "my-aws-s3-bucket" {
+  bucket = "devops-tfm-s3-bucket-${var.variables_sub_az}"
+  # acl    = "private"
+  force_destroy = true
+  tags = {
+    name      = "devops-tfm-s3-bucket-${var.variables_sub_az}"
+    Terraform = "true"
+    Purpose   = "Telerik Academy DevOps Project"
+  }
+}
 
-#   versioning {
-#     enabled = true
-#   }
-
-#   tags = {
-#     name      = "my-aws-s3-bucket-${var.variables_sub_az}"
-#     Terraform = "true"
-#   }
-# }
+resource "aws_s3_account_public_access_block" "my-aws-s3-bucket-acl" {
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+resource "aws_s3_bucket_versioning" "my-aws-s3-bucket-versioning" {
+  bucket = aws_s3_bucket.my-aws-s3-bucket.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
 
 resource "tls_private_key" "generated" {
   algorithm = "RSA"
