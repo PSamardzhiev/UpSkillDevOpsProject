@@ -10,6 +10,7 @@
 - [Ansible Config Management Details](#Ansible-Configuration-Managmenet)
 - [Usage and Requirements](#Usage-Requirements)
 - [Possible Future Improvements](#Future-Improvements:)
+- [License](#License)
 
 ## Quick Overview
 
@@ -128,3 +129,5 @@ terraform plan #review the provided plan
 terraform apply #confirmation will be requred
 ```
 ## Future Improvements:
+
+## License:
