@@ -31,6 +31,9 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     └── variables.tf  <-- Variables File
 ```
 ## CICD Workflow
+``````
+.git/workflows/terraform.yaml
+``````
 
 
 ## Usage requirements:
