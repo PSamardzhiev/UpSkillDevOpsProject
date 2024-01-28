@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
 - [Repo Structure](#Repo-Structure)
-- [Project Details](#CICD-Workflow)
+- [CICD Workflow](#CICD-Workflow)
 - [Usage and Requirements](#Usage-Requirements)
 
 ## Quick Overview
