@@ -6,20 +6,15 @@ This repository contains the infrastructure as code (IaC) setup using Terraform 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Infrastructure Details](#infrastructure-details)
-- [Ansible Playbook](#ansible-playbook)
-- [Terraform Configuration](#terraform-configuration)
-- [Variables](#variables)
-- [How to Use](#how-to-use)
-- [Contributors](#contributors)
-- [License](#license)
+- [Repo Structure](#Structure)
+- [Requirements](#Requirements)
+
 
 ## Overview
 
 The primary goal of this project is to demonstrate a comprehensive CI/CD pipeline by deploying a Dockerized NextCloud application on AWS. The technologies utilized include Ansible, Terraform, and AWS. The project is specifically designed for the Telerik DevOps Upskill program.
 
-## Repo Structure
+## Structure
 ```
 .
 ├── ansible
@@ -38,10 +33,7 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf
     └── variables.tf
 ```
-## Project goal and Overview
-
-
-## Usage requirements:
+## Requirements:
 - In order to use this project you need to have AWS account and Terraform installed locally, Terraform modules version is outlined in terraform/terraform.tf file
 ``````hcl
 terraform {
