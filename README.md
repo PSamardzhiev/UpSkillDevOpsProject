@@ -15,7 +15,7 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
 ```
 .
 ├── ansible
-│   └── instance-config.yml  <-- EC2 Configuration FIle
+│   └── instance-config.yml  <-- EC2 Ansible Config
 ├── app  <--application folder
 │   ├── compose.yaml  <-- NextCloud YAML File for Docker
 │   ├── output.jpg
