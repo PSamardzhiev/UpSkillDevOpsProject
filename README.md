@@ -9,7 +9,7 @@
 - [Terraform IaC Details](#Terraform-IaC-Details)
 - [Ansible Config Management Details](#Ansible-Configuration-Managmenet)
 - [Usage and Requirements](#Usage-Requirements)
-- [Possible Future Improvements](#Future-Improvements:)
+- [Possible Future Improvements](#Future-Improvements)
 - [License](#License)
 - [Contributors and Collaborators](#Contributors-and-Collaborators)
 
@@ -89,7 +89,38 @@ The resulting AMI will be available in your AWS account with the specified name 
 
 
 ## Ansible Configuration Managmenet:
+`./ansible/instance-config.yaml`  
+Ansible Playbook Desired State Configuration: Install Docker on EC2 Instance  
 
+The following Ansible playbook, `install_docker.yml`, automates the installation of Docker on an EC2 target instance. This playbook is designed to be executed on the localhost, assuming you have SSH access to the target EC2 instance.
+
+### Playbook Tasks:
+
+1. **Get Current User**: Retrieves the current user information on the localhost.
+
+2. **Update Apt Packages**: Ensures that the apt package manager on the localhost is up-to-date.
+
+3. **Install Docker Dependencies**: Installs essential dependencies required for Docker on the localhost.
+
+4. **Add Docker GPG Key**: Adds the GPG key for the Docker repository.
+
+5. **Add Docker APT Repository**: Adds the Docker APT repository to the package manager.
+
+6. **Install Docker**: Installs the Docker Community Edition on the localhost.
+
+7. **Add User to Docker Group**: Adds the current user to the Docker group, enabling Docker commands without sudo.
+
+8. **Start Docker Service**: Ensures that the Docker service is started on the localhost.
+
+### How to Use:
+
+1. Ensure you have SSH access to the target EC2 instance.
+
+2. Update the target EC2 instance details in the `hosts` section of the playbook if necessary.
+
+3. Run the playbook using the command: `cd ansible && ansible-playbook instance-config.yaml `.
+
+This playbook streamlines the process of setting up Docker on an EC2 instance, providing a seamless environment for containerized applications.
 
 ## Usage requirements:
 - In order to use this project and manually create the infrastructure you need to have AWS account and Terraform installed locally, Terraform modules version is outlined in terraform/terraform.tf file
