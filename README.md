@@ -11,6 +11,7 @@
 - [Usage and Requirements](#Usage-Requirements)
 - [Possible Future Improvements](#Future-Improvements:)
 - [License](#License)
+- [Contributors and Collaborators](#Contributors-and-Collaborators)
 
 ## Quick Overview
 
@@ -41,7 +42,7 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
 ``````
 .git/workflows/terraform.yaml
 ``````
-Defines several jobs as a complete CICD Pipeline
+Defines single job with multiple steps as a complete CICD Pipeline
 - Setup AWS Cli by exporting access key and secret access key to the build environment
 - Setup Terraform using hashicorp/setup-terraform@v1
 - Installs Checkov using Python PIP
@@ -132,7 +133,24 @@ terraform plan #review the provided plan
 terraform apply #confirmation will be requred
 ```
 ## Future Improvements:
-Migrate the application to Kubernetes (AWS EKS)
-Implement Observavility Tools
+Migrate the application to Kubernetes (AWS EKS)  
+Implement Observavility Tools  
+Scale out the application
 
 ## License:
+The 'LICENSE' file in this repository outlines the rules of engagement governing the use of the project's source code and assets. It establishes the terms under which you can embrace and share this work. Kindly respect and honor these terms as you engage with and contribute to this project.
+
+### Terms of Use
+
+[MIT License]
+
+Please refer to the 'LICENSE' file in this repo for the specific terms and conditions governing the use of this project.
+
+## Contributors and Collaborators
+### Contributors
+- Petko Samardzhiev
+
+### Collaborators
+- Iliyan Vutoff - github: https://github.com/vutoff
+- Daniel Rankov - github: https://github.com/severel
+
