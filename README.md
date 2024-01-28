@@ -2,16 +2,21 @@
 ##### Telerik Academy DevOps UpSkill Final Project - 2023-2024 #####
 ## Table of Contents
 
-- [Overview](#Quick-overview)
-- [Project Structure](#repo-structure)
-- [Project Goals and Overview](#Description)
-- [Usage and Requirements](#usage-requirements)
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Infrastructure Details](#infrastructure-details)
+- [Ansible Playbook](#ansible-playbook)
+- [Terraform Configuration](#terraform-configuration)
+- [Variables](#variables)
+- [How to Use](#how-to-use)
+- [Contributors](#contributors)
+- [License](#license)
 
 ## Quick Overview
 
 The primary goal of this project is to demonstrate a comprehensive CI/CD pipeline by deploying a Dockerized NextCloud application on AWS.
 
-## Repo Structure
+## Structure
 ```
 .
 ├── ansible
@@ -30,8 +35,8 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf  <-- TF Modules Version
     └── variables.tf  <-- Variables File
 ```
-## Description
-The project contains a github actions CICD pipeline which deployes EC2 virtual machine, then pulls this repo and configure the EC2 instance by installing Docker and runs a next cloud
+## Project goal and Overview
+
 
 ## Usage requirements:
 - In order to use this project you need to have AWS account and Terraform installed locally, Terraform modules version is outlined in terraform/terraform.tf file
