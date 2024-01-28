@@ -39,9 +39,8 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     └── variables.tf  <-- Variables File
 ```
 ## CICD Workflow Details
-``````
-.git/workflows/terraform.yaml
-``````
+`source file: .git/workflows/terraform.yaml`
+
 Defines single job with multiple steps as a complete CICD Pipeline
 - Setup AWS Cli by exporting access key and secret access key to the build environment
 - Setup Terraform using hashicorp/setup-terraform@v1
@@ -89,7 +88,7 @@ The resulting AMI will be available in your AWS account with the specified name 
 
 
 ## Ansible Configuration Managmenet:
-`./ansible/instance-config.yaml`  
+`source file: ./ansible/instance-config.yaml`  
 Ansible Playbook Desired State Configuration: Install Docker on EC2 Instance  
 
 The following Ansible playbook, `install_docker.yml`, automates the installation of Docker on an EC2 target instance. This playbook is designed to be executed on the localhost, assuming you have SSH access to the target EC2 instance.
