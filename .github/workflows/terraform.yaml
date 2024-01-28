@@ -23,7 +23,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.aws_access_key }}
           aws-secret-access-key: ${{ secrets.aws_secret_key }}
-          aws-region: us-east-1  # Replace with your desired AWS region
+          aws-region: us-east-1
           
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
@@ -35,13 +35,24 @@ jobs:
         id: init
         run: |
           cd terraform
-          terraform init -backend-config="bucket=Petko-terraform-state-bucket" -backend-config="key=terraform.tfstate"
+          terraform init
 
       - name: Checkov Scan
         id: checkov
         run: |
           cd terraform
           checkov -d . || exit 0
+
+      - name: Format Terraform Code
+        run: |
+          cd terraform
+          terraform fmt -check -diff || exit 0
+
+      - name: Terraform Validate
+        id: validate
+        run: |
+          cd terraform
+          terraform validate
 
       - name: Terraform Plan
         id: plan
@@ -55,10 +66,9 @@ jobs:
           cd terraform
           terraform apply --auto-approve tfplan
 
-      - name: Copy tfstate and SSH Key files to the created S3 Bucket
+      - name: Copy tfstate tfplan and SSH key to the created S3 Bucket
         run: |
           cd terraform
           aws s3 cp terraform.tfstate s3://devops-tfm-s3-bucket-us-east-1a/terraform.tfstate
           aws s3 cp MyAWSKey.pem s3://devops-tfm-s3-bucket-us-east-1a/MyAWSKey.pem
-
-
+          aws s3 cp tfplan s3://devops-tfm-s3-bucket-us-east-1a/tfplan
