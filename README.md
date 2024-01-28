@@ -6,14 +6,8 @@ This repository contains the infrastructure as code (IaC) setup using Terraform 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Infrastructure Details](#infrastructure-details)
-- [Ansible Playbook](#ansible-playbook)
-- [Terraform Configuration](#terraform-configuration)
-- [Variables](#variables)
-- [How to Use](#how-to-use)
-- [Contributors](#contributors)
-- [License](#license)
+- [Project Structure](#repo-structure)
+- [Project Goals and Overview](#Goals)
 
 ## Overview
 
@@ -38,7 +32,7 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf
     └── variables.tf
 ```
-## Project goal and Overview
+## Goals
 
 
 ## Usage requirements:
