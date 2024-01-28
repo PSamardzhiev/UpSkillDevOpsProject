@@ -1,5 +1,5 @@
 ---
-- name: Install Docker on localhost
+- name: Install Docker on EC2 target inance
   hosts: localhost
   become: true
 
