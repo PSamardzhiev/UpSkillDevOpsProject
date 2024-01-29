@@ -32,12 +32,13 @@ jobs:
           echo "Found AMI: $ami_id"
           echo "::set-output name=ami_id::$ami_id"
 
-      - name: Install Packer if AMI not found
+      - name: Install Packer if AMI not found and build the required AMI
         if: steps.ami_check.outputs.ami_id == 'None'
         run: |
           wget https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
           sudo unzip -o packer_1.10.0_linux_amd64.zip -d /usr/local/bin/
           cd packer
+          packer init packer.pkr.hcl
           packer build packer.pkr.hcl
 
       - name: Set up Terraform
