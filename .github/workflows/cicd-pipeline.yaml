@@ -36,7 +36,7 @@ jobs:
         if: steps.ami_check.outputs.ami_id == 'None'
         run: |
           wget https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
-          unzip packer_1.7.0_linux_amd64.zip
+          unzip packer_1.10.0_linux_amd64.zip
           sudo mv -f packer /usr/local/bin/packer
 
       - name: Build AMI using Packer
