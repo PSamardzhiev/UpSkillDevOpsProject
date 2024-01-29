@@ -25,7 +25,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_key }}
           aws-region: us-east-1
 
-      - name: Check for existing AMI and Install Packer if not found
+      - name: Check for existing AMI
         id: ami_and_packer
         run: |
           ami_id=$(aws ec2 describe-images --filters "Name=name,Values=telerik-demo-ami" --query 'Images[0].ImageId' --output text || echo "not_found")
@@ -33,9 +33,7 @@ jobs:
           echo "::set-output name=ami_id::$ami_id"
 
           if [ "$ami_id" == "None" ]; then
-           curl -o packer_1.10.0_linux_amd64.zip https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
-           sudo unzip -o packer_1.10.0_linux_amd64.zip
-           sudo install -m 0755 packer /usr/local/bin/packer
+           echo "No AMI found"
           fi
 
       - name: Build AMI using Packer
