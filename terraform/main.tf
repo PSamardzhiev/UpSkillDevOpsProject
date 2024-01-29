@@ -195,7 +195,7 @@ resource "aws_subnet" "terraform-subnet" {
   }
 }
 
-# uncomment in case of any need, commented to save money on AWS
+#Creates S3 Bucket to keep the TFState, MyAWSKey.pem and tfplan
 resource "aws_s3_bucket" "my-aws-s3-bucket" {
   bucket = "devops-tfm-s3-bucket-${var.variables_sub_az}"
   # acl    = "private"

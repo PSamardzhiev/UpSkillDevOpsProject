@@ -85,6 +85,187 @@ How to Use
 The resulting AMI will be available in your AWS account with the specified name ("telerik-demo-ami") and configuration.
 
 ## Terraform IaC Details:
+`source file: ./terraform/main.tf`
+### Terraform AWS Infrastructure Deployment
+
+This Terraform configuration automates the deployment of AWS infrastructure, designed specifically for the Telerik DevOps Upskill program. The primary goal is to showcase a complete CI/CD pipeline by deploying a Dockerized NextCloud application.
+
+### Key Components:
+
+1. **AWS Provider Configuration**: The AWS provider is set to the us-east-1 region.
+
+2. **VPC Definition**: Defines a Virtual Private Cloud (VPC) with specified CIDR block and tags for identification.
+
+3. **Subnet Deployment**: Private and public subnets are deployed within the VPC, each associated with respective availability zones.
+
+4. **Route Tables**: Creates route tables for public and private subnets, with configurations for internet and NAT gateways.
+
+5. **Internet Gateway and NAT Gateway**: Establishes an internet gateway for public subnets and a NAT gateway for private subnets.
+
+6. **EC2 Instance**: Launches an EC2 instance in a public subnet, running a Dockerized NextCloud application. Ansible is used to configure the instance.
+
+7. **S3 Bucket**: Optional S3 bucket deployment for storage, commented out to avoid unnecessary costs.
+
+8. **Security Groups**: Defines security groups for SSH, web traffic, and ICMP ping.
+
+### Usage:
+
+1. Ensure AWS credentials are properly configured.
+
+2. Update variables in `variables.tf` to match your desired configurations.
+
+3. Run `terraform init`, `terraform plan`, and `terraform apply` to deploy the infrastructure.
+
+4. Explore and adapt the Terraform modules based on your specific requirements.
+
+This Terraform setup serves as a practical example for creating a robust AWS infrastructure and integrating it into a larger DevOps workflow.  
+
+---
+`source file: ./terraform/outputs.tf`
+
+### Terraform Outputs
+
+This Terraform configuration provides useful outputs to retrieve information about the deployed infrastructure. These outputs can be leveraged for better visibility and integration into other parts of your DevOps workflow.
+
+### Outputs:
+
+1. **Project Name:**
+   - Description: Print a custom message.
+   - Value: "Telerik Academy UpSkill DevOps Project"
+
+2. **VPC ID:**
+   - Description: Output the ID of the Virtual Private Cloud (VPC).
+   - Value: The ID of the VPC created during deployment.
+
+3. **Public URL for Web Server:**
+   - Description: Public URL for accessing the web server.
+   - Value: `http://${aws_instance.web_server.public_ip}:80`
+
+4. **EC2 Private IP Address:**
+   - Description: Private IP address of the EC2 instance.
+   - Value: The private IP address of the web server instance.
+
+5. **EC2 Public IP Address:**
+   - Description: Public IP address of the EC2 instance.
+   - Value: The public IP address of the web server instance.
+
+6. **VPC Information:**
+   - Description: Information about the VPC environment.
+   - Value: "Your ${aws_vpc.vpc.tags.Environment} VPC has an ID of ${aws_vpc.vpc.id}"
+
+7. **EC2 Instance Name:**
+   - Description: Outputs the name of the EC2 instance.
+   - Value: The value of the 'Name' tag assigned to the web server instance.
+
+   > Note: The 'sensitive' attribute is set to false for the EC2 instance name output, making it visible in the output without hiding sensitive information.
+
+### Usage:
+
+Retrieve these outputs using the `terraform output` command after successfully applying the Terraform configuration. These outputs can be valuable for scripting, automation, or integrating with other tools in your DevOps pipeline.
+
+---
+`source file: ./terraform/terraform.tf`
+
+### Terraform Configuration
+
+This Terraform configuration file specifies the required version of Terraform and the necessary providers for the successful execution of the deployment script.
+
+### Configuration Details:
+
+- **Terraform Version:**
+  - Minimum Required Version: 1.0.6
+  - Details: This configuration requires Terraform version 1.0.6 or newer to ensure compatibility.
+
+- **Required Providers:**
+  - **AWS Provider:**
+    - Source: hashicorp/aws
+    - Version: ~> 5.0
+  - **Random Provider:**
+    - Source: hashicorp/random
+    - Version: ~> 3.1.0
+  - **HTTP Provider:**
+    - Source: hashicorp/http
+    - Version: ~> 2.1.0
+  - **Local Provider:**
+    - Source: hashicorp/local
+    - Version: ~> 2.1.0
+  - **TLS Provider:**
+    - Source: hashicorp/tls
+    - Version: ~> 4.0.0
+
+### Usage:
+
+Ensure that you have Terraform version 1.0.6 or a newer version installed. Use the specified providers to integrate with the respective services during the deployment process. Update the versions as needed, following the specified version constraints.
+
+---
+`source file: ./terraform/variables.tf`
+
+### Terraform Variables
+
+This section defines the variables used in the Terraform configuration, allowing for customization and flexibility during deployment.
+
+### Variable Details:
+
+- **aws_region:**
+  - Type: string
+  - Description: Specifies the AWS region to test AWS resources created using Terraform.
+  - Default: "us-east-1"
+
+- **vpc_name:**
+  - Type: string
+  - Description: Specifies the name for the Virtual Private Cloud (VPC).
+  - Default: "demo_vpc"
+
+- **vpc_cidr:**
+  - Type: string
+  - Description: Specifies the CIDR block for the VPC.
+  - Default: "10.0.0.0/16"
+
+- **private_subnets:**
+  - Type: map
+  - Description: Defines the private subnets with corresponding availability zone numbers.
+  - Default: { "private_subnet_1" = 1, "private_subnet_2" = 2, "private_subnet_3" = 3 }
+
+- **public_subnets:**
+  - Type: map
+  - Description: Defines the public subnets with corresponding availability zone numbers.
+  - Default: { "public_subnet_1" = 1, "public_subnet_2" = 2, "public_subnet_3" = 3 }
+
+- **variables_sub_cidr:**
+  - Type: string
+  - Description: CIDR block for the Variables Subnet.
+  - Default: "10.0.202.0/24"
+
+- **variables_sub_az:**
+  - Type: string
+  - Description: Availability Zone used for the Variables Subnet.
+  - Default: "us-east-1a"
+
+- **variables_sub_auto_ip:**
+  - Type: bool
+  - Description: Set automatic IP assignment for the Variables Subnet.
+  - Default: true
+
+- **environment:**
+  - Type: string
+  - Description: Specifies the environment for deployment.
+  - Default: "dev"
+
+- **vpc_owner:**
+  - Type: string
+  - Description: Specifies the deployment owner.
+  - Default: "Petko"
+
+- **instance_type:**
+  - Type: string
+  - Description: Specifies the AWS Instance Type (EC2 Type).
+  - Default: "t2.medium"
+
+### Usage:
+
+Adjust these variables according to your deployment requirements. Update the values to match your desired configuration before running Terraform.
+
+---
 
 
 ## Ansible Configuration Managmenet:
