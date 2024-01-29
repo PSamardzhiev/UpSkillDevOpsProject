@@ -32,18 +32,14 @@ jobs:
           echo "Found AMI: $ami_id"
           echo "::set-output name=ami_id::$ami_id"
 
-      - name: Install Packer if AMI not found
-        if: steps.ami_check.outputs.ami_id == 'not_found'
+      - name: Install Packer if AMI not found and build the required AMI
+        if: steps.ami_check.outputs.ami_id == 'None'
         run: |
-          wget https://releases.hashicorp.com/packer/1.7.0/packer_1.7.0_linux_amd64.zip
-          unzip packer_1.7.0_linux_amd64.zip
-          sudo mv packer /usr/local/bin/packer
-
-      - name: Build AMI using Packer
-        if: steps.ami_check.outputs.ami_id == 'not_found'
-        run: |
+          wget https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
+          sudo unzip -o packer_1.10.0_linux_amd64.zip -d /usr/local/bin/
           cd packer
-          packer build -var 'aws_access_key={{ env.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key={{ env.AWS_SECRET_ACCESS_KEY }}' packer.pkr.hcl
+          packer init packer.pkr.hcl
+          packer build packer.pkr.hcl
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1

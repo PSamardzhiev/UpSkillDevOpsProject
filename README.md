@@ -104,7 +104,7 @@ This Terraform configuration automates the deployment of AWS infrastructure, des
 
 6. **EC2 Instance**: Launches an EC2 instance in a public subnet, running a Dockerized NextCloud application. Ansible is used to configure the instance.
 
-7. **S3 Bucket**: Optional S3 bucket deployment for storage, commented out to avoid unnecessary costs.
+7. **S3 Bucket**: S3 bucket deployment for tfstate, MyAWSKey.pem and tfplan storage
 
 8. **Security Groups**: Defines security groups for SSH, web traffic, and ICMP ping.
 
