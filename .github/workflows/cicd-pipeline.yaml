@@ -34,10 +34,10 @@ jobs:
 
           if [ "$ami_id" == "None" ]; then
            curl -o packer_1.10.0_linux_amd64.zip https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
-          sudo unzip packer_1.10.0_linux_amd64.zip
-          sudo install -m 0755 packer /usr/local/bin/packer
+           sudo unzip packer_1.10.0_linux_amd64.zip
+           sudo install -m 0755 packer /usr/local/bin/packer
           fi
-          
+
       - name: Build AMI using Packer
         if: steps.ami_and_packer.outputs.ami_id == 'not_found'
         run: |
