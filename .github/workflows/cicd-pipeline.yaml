@@ -37,13 +37,9 @@ jobs:
         run: |
           wget https://releases.hashicorp.com/packer/1.10.0/packer_1.10.0_linux_amd64.zip
           sudo unzip -o packer_1.10.0_linux_amd64.zip -d /usr/local/bin/
-
-      - name: Build AMI using Packer
-        if: steps.ami_check.outputs.ami_id == 'not_found'
-        run: |
           cd packer
           packer build -var 'aws_access_key={{ env.AWS_ACCESS_KEY_ID }}' -var 'aws_secret_key={{ env.AWS_SECRET_ACCESS_KEY }}' packer.pkr.hcl
-
+          
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
 
