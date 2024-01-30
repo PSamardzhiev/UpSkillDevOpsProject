@@ -343,18 +343,36 @@ terraform {
   }
 }
 ``````
-- Once you have terraform installed locally nagivate to terraform folder and execute the following commands in your terminal:
+- Once you have terraform installed locally nagivate to `terraform` folder and execute the following commands in your Linux terminal:
 
 ```bash
 terraform init
 terraform plan #review the provided plan
 terraform apply #confirmation will be requred
+```  
+## AWS Environment Disposal
+### For Envronment NOT created via CICD approach outlined in this project:   
+Follow the below guide if you have created your AWS Environment manually:  
+
+Navigate to `terraform` folder located in this project and execute the following commands in your Linux Terminal:   
+```bash
+terraform refresh
+terraform destroy -auto-approve
+```   
+### For Envronment created via CICD (GitHub Actions)
+Navigate to `env_disposal` folder in this project 
+Execute the following commands in your Linux Terminal:
+```bash
+sudo chmod +x ./env_disposal.sh
+bash ./env_disposal.sh
 ```
+
 ## Future Improvements:
-Migrate the application to Kubernetes (AWS EKS)  
-Implement Observavility Tools  
-Scale out the application  
-Improve tfstate using dynamoDB
+- Migrate the application to Kubernetes (AWS EKS)  
+- Add Route53 DNS Records and SSL  
+- Implement Observavility Tools  
+- Scale out the application  
+- Improve tfstate using dynamoDB in combination with S3 Bucket  
 
 ## License:
 The 'LICENSE' file in this repository outlines the rules of engagement governing the use of the project's source code and assets. It establishes the terms under which you can embrace and share this work. Kindly respect and honor these terms as you engage with and contribute to this project.
