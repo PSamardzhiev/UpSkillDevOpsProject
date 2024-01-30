@@ -351,10 +351,11 @@ terraform plan #review the provided plan
 terraform apply #confirmation will be requred
 ```
 ## Future Improvements:
-Migrate the application to Kubernetes (AWS EKS)  
-Implement Observavility Tools  
-Scale out the application  
-Improve tfstate using dynamoDB
+- Migrate the application to Kubernetes (AWS EKS)  
+- Add Route53 DNS Records and SSL  
+- Implement Observavility Tools  
+- Scale out the application  
+- Improve tfstate using dynamoDB
 
 ## License:
 The 'LICENSE' file in this repository outlines the rules of engagement governing the use of the project's source code and assets. It establishes the terms under which you can embrace and share this work. Kindly respect and honor these terms as you engage with and contribute to this project.
