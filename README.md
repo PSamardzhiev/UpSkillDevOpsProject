@@ -367,7 +367,7 @@ Please refer to the 'LICENSE' file in this repo for the specific terms and condi
 
 ## Contributors and Collaborators
 ### Contributors
-- Petko Samardzhiev
+- Petko Samardzhiev - github: https://github.com/PSamardzhiev
 
 ### Collaborators
 - Iliyan Vutoff - github: https://github.com/vutoff
