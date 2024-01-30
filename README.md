@@ -356,6 +356,7 @@ Follow the below guide if you have created your AWS Environment manually:
 
 Navigate to `terraform` folder located in this project and execute the following commands in your Linux Terminal:   
 ```bash
+cd terraform  
 terraform refresh
 terraform destroy -auto-approve
 ```   
@@ -363,6 +364,7 @@ terraform destroy -auto-approve
 Navigate to `env_disposal` folder in this project 
 Execute the following commands in your Linux Terminal:
 ```bash
+cd env_disposal
 sudo chmod +x ./env_disposal.sh
 bash ./env_disposal.sh
 ```
