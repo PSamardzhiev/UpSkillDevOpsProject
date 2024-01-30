@@ -19,9 +19,10 @@ fi
 # Copy tfstate file from S3 bucket to local terraform directory
 aws s3 cp "s3://$S3_BUCKET_NAME/$TFSTATE_FILE_NAME" ./
 cp -f ./$TFSTATE_FILE_NAME ../terraform/terraform.tfstate
+echo "tfstate file copied successfully from S3 bucket to local directory: $LOCAL_DIRECTORY"
+sleep 2
 cd ../terraform
 terraform init
 terraform refresh
 terraform destroy -auto-approve
 
-echo "tfstate file copied successfully from S3 bucket to local directory: $LOCAL_DIRECTORY"
