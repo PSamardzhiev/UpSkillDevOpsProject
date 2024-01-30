@@ -93,16 +93,7 @@ jobs:
         run: |
           cd terraform
           terraform apply --auto-approve tfplan
-
-  copy_to_s3:
-    name: Copy to S3
-    runs-on: ubuntu-latest
-    needs: terraform_apply
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Copy tfstate, tfplan, and SSH key to the created S3 Bucket
+      - name: Copy to S3 Bucket
         run: |
           cd terraform
           aws s3 cp terraform.tfstate s3://devops-tfm-s3-bucket-us-east-1a/terraform.tfstate
