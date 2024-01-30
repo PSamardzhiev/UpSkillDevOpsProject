@@ -24,5 +24,5 @@ sleep 2
 cd ../terraform
 terraform init
 terraform refresh
-terraform destroy -auto-approve
+terraform destroy
 
