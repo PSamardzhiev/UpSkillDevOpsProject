@@ -367,6 +367,7 @@ Execute the following commands in your Linux Terminal:
 cd env_disposal
 sudo chmod +x ./env_disposal.sh
 bash ./env_disposal.sh
+#! you will be prompted to cofirm with yes for the infrstructure to be destroyed  
 ```
 
 ## Future Improvements:
