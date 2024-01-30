@@ -66,7 +66,7 @@ Defines single job with multiple steps as a complete CICD Pipeline
 
 ## Immutable Infrastructure with Hashicorp Packer:
 ### Packer Template for Ubuntu AMI
-Source file `./packer/packer.pkr.hcl`
+Source file `./packer/packer.pkr.hcl`  
 This part of the project contains a Packer template for building an Amazon Machine Image (AMI) with Ubuntu 22.04 using the `amazon-ebs` builder. The resulting AMI is named "telerik-demo-ami" and is configured for use in the `us-east-1` region with an instance type of `t2.micro`.
 
 Packer Configuration
