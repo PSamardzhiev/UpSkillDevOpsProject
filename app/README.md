@@ -60,12 +60,12 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 6d4c6630a4a3        mariadb             "docker-entrypoint.s…"   35 seconds ago      Up 34 seconds       3306/tcp             nextcloud-redis-mariadb_db_1
 ```
 
-Navigate to `http://localhost:80` in your web browser to access the installed
+Navigate to `http://ec2-instance-ip:80` in your web browser to access the installed
 Nextcloud service.
 
 ![page](output.jpg)
 
-Stop and remove the containers
+Manually stop and remove the containers
 
 ```
 $ docker compose down
