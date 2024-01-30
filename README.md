@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
 - [Repo Structure](#Repo-Structure)
+- [Branching Strategy](#Branching-Strategy)
 - [CICD Workflow Details](#CICD-Workflow)
 - [Packer Details](#Immutable-Infrastructure-with-Hashicorp-Packer)
 - [Terraform IaC Details](#Terraform-IaC-Details)
@@ -38,7 +39,13 @@ The primary goal of this project is to demonstrate a comprehensive CI/CD pipelin
     ├── terraform.tf  <-- TF Modules Version
     └── variables.tf  <-- Variables File
 ```
-## CICD Workflow Details
+
+## Branching Strategy
+Currently available branches: `main` and `new-features`  
+The `main` branch is protected and any changes needs to come via PR  
+New changes and features should be introduced via `new-features` branch  
+
+## CICD Workflow Details:
 `source file: .git/workflows/terraform.yaml`
 
 Defines single job with multiple steps as a complete CICD Pipeline
@@ -360,7 +367,7 @@ Please refer to the 'LICENSE' file in this repo for the specific terms and condi
 
 ## Contributors and Collaborators
 ### Contributors
-- Petko Samardzhiev
+- Petko Samardzhiev - github: https://github.com/PSamardzhiev
 
 ### Collaborators
 - Iliyan Vutoff - github: https://github.com/vutoff
