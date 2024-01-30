@@ -55,12 +55,6 @@ jobs:
       - name: Install Checkov with pip
         run: pip install checkov
 
-      - name: Terraform Init
-        id: init
-        run: |
-          cd terraform
-          terraform init
-
       - name: Checkov Scan
         id: checkov
         run: |
@@ -76,6 +70,7 @@ jobs:
         id: validate
         run: |
           cd terraform
+          terraform init
           terraform validate
 
   terraform_apply:
@@ -90,6 +85,7 @@ jobs:
         id: plan
         run: |
           cd terraform
+          terraform init -upgrade
           terraform plan -out=tfplan
 
       - name: Terraform Apply
