@@ -1,4 +1,4 @@
-# 2023 NextCloud on AWS EC2 Instance using DevOps Practices
+# 2024 NextCloud on AWS EC2 Instance using DevOps Practices
 ##### Telerik Academy DevOps UpSkill Final Project - 2023-2024 #####
 ## Table of Contents
 
